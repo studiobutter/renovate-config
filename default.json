@@ -1,0 +1,59 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  "extends": [
+    "config:recommended",
+    ":semanticCommitTypeAll(chore)",
+    ":automergeMinor",
+    ":automergePatch",
+    ":automergeDigest",
+    "group:allNonMajor"
+  ],
+
+  "dependencyDashboard": false,
+
+  "timezone": "Asia/Ho_Chi_Minh",
+  "schedule": ["at 8:00 am on Monday"],
+
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "automergeType": "pr",
+    "automergeStrategy": "squash",
+    "platformAutomerge": false,
+    "schedule": ["at 8:00 am on Monday"]
+  },
+
+  "packageRules": [
+    {
+      "description": "Auto-merge minor/patch/digest for Node.js/React",
+      "matchManagers": ["npm", "yarn", "pnpm"],
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash"
+    },
+    {
+      "description": "Auto-merge minor/patch/digest for Python (pip/Poetry/setup)",
+      "matchManagers": ["pip_requirements", "poetry", "pip_setup"],
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash"
+    },
+    {
+      "description": "Disable .python-version updates",
+      "matchFileNames": [".python-version"],
+      "enabled": false
+    },
+    {
+      "description": "Group Node.js engines and base Docker images",
+      "groupName": "Node.js + Docker base images",
+      "matchManagers": ["dockerfile", "nvm"],
+      "matchPackagePatterns": ["node", "python", "ubuntu"],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash"
+    }
+  ]
+}
