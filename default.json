@@ -10,7 +10,7 @@
     "group:allNonMajor"
   ],
 
-  "dependencyDashboard": false,
+  "dependencyDashboard": true,
 
   "timezone": "Asia/Ho_Chi_Minh",
   "schedule": ["at 8:00 am on Monday"],
